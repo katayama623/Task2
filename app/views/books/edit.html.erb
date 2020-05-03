@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Editing Book
+</h1>
+        </div>
+        <%= form_for(@book) do |f| %>
+
+            <% if @book.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= @book.errors.count %>errors prohibited this obj from being saved:</h2>
+                        <ul>
+                            <% @book.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                </div>
+            <% end %>
+
+            <div class="row">
+
+                        <div class="col-md-6 col-md-offset-3">
+                            <h5>Title</h5>
+                            <%= f.text_field :title, size: "80", class: "book_title" %>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <h5>Opinion</h5>
+                            <%= f.text_area :body, size: "80", class: "book_body" %>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <%= f.submit "Update Book", class: "btn btn-lg btn-block btn-base-1 mt-20" %>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <p>
+                            <%= link_to 'Show', book_path(@book.id), class: "book_#{@book.id}" %>
+                            ｜
+                            <%= link_to "Back", books_path(@books), class: "Back" %>
+                            </p>
+                        </div>
+            </div>
+
+        <% end %>
+
+    </div>
+</div>
